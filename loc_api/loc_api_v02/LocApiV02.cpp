@@ -256,7 +256,9 @@ LocApiBase* LocApiV02::createLocApiV02(const MsgTask *msgTask,
         return NULL;
     }
     LOC_LOGD("%s:%d]: Creating new LocApiV02", __func__, __LINE__);
-    return new LocApiV02(msgTask, exMask, context);
+    LocApiV02* locApi = new LocApiV02(msgTask, exMask, context); //Is this the right syntax?
+    locApi->open(exMask); //Hope this works
+    return locApi; //It expects a pointer.
 }
 
 /* Initialize a loc api v02 client AND
